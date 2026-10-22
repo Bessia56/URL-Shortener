@@ -3,7 +3,7 @@ const { getLinksSchema } = require("../validators/getLinks");
 
 async function getLinks(req, res, next) {
     try {
-        const [{ total }] = await knex("links").count("* as total");
+        
         const params = await getLinksSchema.validate(req.query, {
             abortEarly: false,
             stripUnknown: true,
