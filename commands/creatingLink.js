@@ -13,7 +13,18 @@ async function creatingLink(req, res, next) {
         const { url, customCode, expiresAt } = data;
 
         const id = randomUUID();
-        const shortCode = customCode || generateCode(5);
+        let shortCode = customCode || generateCode(5);
+        // Проверяем, существует ли уже короткий код в базе данных
+        while (await knex("links").where("short_code", shortCode).first()) {
+            if (customCode) {
+                return res.status(409).json({
+                    error: "Этот короткий код уже занят",
+                });
+            }
+
+            shortCode = generateCode(5);
+        };
+
         const createdAt = new Date().toISOString();
         const parsedUrl = new URL(url);
 
@@ -27,7 +38,7 @@ async function creatingLink(req, res, next) {
             last_clicked_at: null,
         };
 
-        await knex("links").insert(link); // сделать проверку на уникальность shortCode и если он уже существует, то генерировать новый код и повторять до тех пор, пока не будет уникальный код
+        await knex("links").insert(link); 
 
         return res.status(201).json({
             data: {
