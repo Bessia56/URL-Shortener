@@ -6,8 +6,6 @@ async function oneLinks(req, res, next) {
          const link = await knex("links")
             .where("id", req.params.id)
             .first();
-console.log("ID из запроса:", req.params.id);
-console.log("Найденная запись:", link);
        return res.status(200).json({
             data: {
                 id: link.id,
