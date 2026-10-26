@@ -11,7 +11,11 @@ const updateLinkSchema = yup
             .date()
             .nullable()
             .optional()
-            .min(new Date(), "Дата истечения должна быть в будущем"),
+            .test(
+                "future-date",
+                "Дата истечения должна быть в будущем",
+                (value) => value == null || value > new Date(),
+            ),
     })
     .test(
         "at-least-one",
