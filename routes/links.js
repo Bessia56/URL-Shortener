@@ -9,6 +9,7 @@ const { updateLink } = require("../commands/updateLink");
 const { deleteLink } = require("../commands/deleteLink");
 const { getHealth } = require("../commands/health");
 
+
 router.get("/health", getHealth);
 
 router.post("/", creatingLink);
