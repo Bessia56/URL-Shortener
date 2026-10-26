@@ -6,6 +6,7 @@ const { getLinks } = require("../commands/getLinks");
 const { oneLinks } = require("../commands/oneLink");
 const { stats } = require("../commands/stats");
 const { updateLink } = require("../commands/updateLink");
+const { deleteLink } = require("../commands/deleteLink");
 
 
 
@@ -19,5 +20,7 @@ router.get("/:id", oneLinks);
 router.get("/:id/stats", stats);
 
 router.patch("/:id", updateLink);
+
+router.delete("/:id", deleteLink);
 
 module.exports = router;
