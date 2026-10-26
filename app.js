@@ -5,14 +5,7 @@ const { initializeDatabase } = require("./data/database");
 const linksRouter = require("./routes/links");
 const redirectRouter = require("./routes/redirect");
 
-// Подключаем Swagger UI и спецификацию OpenAPI.
-const swaggerUi = require("swagger-ui-express");
-const swaggerSpec = require("./swagger");
-
 app.use(express.json());
-
-// Документация API.
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Основные маршруты.
 app.use("/", redirectRouter);
