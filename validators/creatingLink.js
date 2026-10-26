@@ -9,7 +9,15 @@ const createLinkSchema = yup.object({
         .max(50)
         .optional(),
 
-    expiresAt: yup.date().min(new Date()).optional(),
+    expiresAt: yup
+        .date()
+        .test(
+            "future-date",
+            "Дата истечения должна быть в будущем",
+            (value) => !value || value > new Date(),
+        )
+        .optional(),// Проверяем дату относительно текущего времени при каждом запросе,
+                    // а не относительно момента запуска сервера.
 });
 
 module.exports = {

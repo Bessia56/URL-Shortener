@@ -5,7 +5,5 @@ function getHealth(req, res) {
         status: "OK",
     });
 }
-
-module.exports = gethealth;
-
+module.exports = { getHealth };
 
