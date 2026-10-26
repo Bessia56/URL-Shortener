@@ -1,4 +1,4 @@
-const knex = require("../data/database");
+const { db: knex } = require("../data/database");
 
 /**
  * Удаляет короткую ссылку по её ID.

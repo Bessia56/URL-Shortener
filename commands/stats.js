@@ -1,4 +1,4 @@
-const knex = require("../data/database");
+const { db: knex } = require("../data/database");
 
 /**
  * Получает статистику переходов по короткой ссылке.

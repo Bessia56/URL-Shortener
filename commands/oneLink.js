@@ -1,4 +1,4 @@
-const knex = require("../data/database");
+const { db: knex } = require("../data/database");
 
 /**
  * Получает информацию об одной короткой ссылке по её ID.

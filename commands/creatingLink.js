@@ -1,5 +1,5 @@
 const { randomUUID } = require("node:crypto");
-const knex = require("../data/database");
+const { db: knex } = require("../data/database");
 const generateCode = require("../utils/generateCode");
 const { createLinkSchema } = require("../validators/creatingLink");
 
