@@ -34,6 +34,8 @@ async function updateLink(req, res, next) {
                     error: "Этот короткий код уже занят",
                 });
             }
+            // Сохраняем новый короткий код в объекте обновления.
+            updates.short_code = data.customCode;
         }
 
         if (data.expiresAt !== undefined) {
