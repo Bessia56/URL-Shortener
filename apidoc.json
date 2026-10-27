@@ -1,0 +1,8 @@
+
+{
+  "name": "URL Shortener API",
+  "version": "1.0.0",
+  "description": "API для создания и управления короткими ссылками",
+  "title": "URL Shortener API",
+  "url": "http://localhost:3001"
+}
