@@ -1,2 +1,14 @@
-node_modules/
+# Сгенерированная документация apiDoc
+/apidoc/
+
+# Локальные базы данных
+/data/database.sqlite
+/data/database.test.sqlite
+
+# Зависимости Node.js
+/node_modules/
+
+# Переменные окружения
 .env
+.env.*
+!.env.example
