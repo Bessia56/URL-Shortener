@@ -1,15 +1,15 @@
 const express = require("express");
 const app = express();
 
-const { initializeDatabase } = require("./data/database");
 const linksRouter = require("./routes/links");
 const redirectRouter = require("./routes/redirect");
 
 app.use(express.json());
 
 // Основные маршруты.
-app.use("/", redirectRouter);
 app.use("/api/v1/links", linksRouter);
+app.use("/", redirectRouter);
+
 
 
 app.use((err, req, res, next) => {
@@ -45,21 +45,5 @@ app.use((err, req, res, next) => {
     });
 });
 
-/**
- * Подготавливает базу данных и запускает HTTP-сервер.
- *
- * @returns {Promise<void>} Завершает запуск сервера
- * или передаёт ошибку вызывающему коду.
- */
-async function startServer() {
-    await initializeDatabase();
+module.exports = app;
 
-    app.listen(3001, () => {
-        console.log("Сервер запущен на порту 3001");
-    });
-}
-
-startServer().catch((error) => {
-    console.error("Ошибка запуска приложения:", error);
-    process.exitCode = 1;
-});
