@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const app = require("./app");
 const { initializeDatabase } = require("./data/database");
 
@@ -10,8 +12,10 @@ const { initializeDatabase } = require("./data/database");
 async function startServer() {
     await initializeDatabase();
 
-    app.listen(3001, () => {
-        console.log("Сервер запущен на порту 3001");
+    const port = process.env.PORT || 3001;
+    
+    app.listen(port, () => {
+        console.log(`Сервер запущен на порту ${port}`);
     });
 }
 

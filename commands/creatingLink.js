@@ -55,12 +55,14 @@ async function creatingLink(req, res, next) {
 
         await knex("links").insert(link);
 
+        const baseUrl = process.env.BASE_URL || "http://localhost:3001";
+
         return res.status(201).json({
             data: {
                 id,
                 url: parsedUrl.href,
                 shortCode,
-                shortUrl: `http://localhost:3001/${shortCode}`,
+                shortUrl: `${baseUrl}/${shortCode}`,
                 createdAt,
                 expiresAt: expiresAtISO, // Возвращаем клиенту ту же дату, что сохранили в БД.
                 clickCount: 0,
