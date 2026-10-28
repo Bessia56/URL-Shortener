@@ -1,18 +1,24 @@
 {
-  "name": "url-shortener",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "better-sqlite3": "^13.0.3",
-    "express": "^5.3.0",
-    "knex": "^3.3.0",
-    "sqlite3": "^6.0.1",
-    "yup": "^1.7.1"
-  }
+    "name": "url-shortener",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js",
+        "docs": "apidoc -i routes/ -o apidoc/"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "better-sqlite3": "^13.0.3",
+        "dotenv": "^18.0.9",
+        "express": "^5.3.0",
+        "knex": "^3.3.0",
+        "sqlite3": "^6.0.1",
+        "yup": "^1.7.1"
+    },
+    "devDependencies": {
+        "apidoc": "^1.2.0",
+        "supertest": "^7.3.1"
+    }
 }
