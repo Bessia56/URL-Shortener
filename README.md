@@ -7,7 +7,7 @@ REST API для создания и управления короткими сс
 ### Клонирование репозитория
 
 ```bash
-git clone <URL_репозитория>
+git clone <URL Shortener API>
 cd url-shortener
 npm install
 ```
@@ -16,9 +16,9 @@ npm install
 Скопируйте файл `.env.example` в `.env` в корне проекта и укажите параметры:
 
 ```env
-PORT= 3001
-BASE_URL= http://localhost:3001
-DATABASE_FILENAME= database.sqlite
+PORT=3001
+BASE_URL=http://localhost:3001
+DATABASE_FILENAME=database.sqlite
 ```
 Выполните команду в терминале из корневой папки проекта:
 ```
@@ -114,7 +114,7 @@ curl -X POST http://localhost:3001/api/v1/links/ \
     "id": "c8b3a0d2-4f4c-4e4c-8a9a-2a3b4c5d6e7f",
     "url": "https://example.com/articles/nodejs",
     "shortCode": "nodejs-guide",
-    "shortUrl": "http://localhost:3000/nodejs-guide",
+    "shortUrl": "http://localhost:3001/nodejs-guide",
     "createdAt": "2026-10-20T08:00:00.000Z",
     "expiresAt": "2026-11-01T00:00:00.000Z",
     "clickCount": 0,
@@ -168,7 +168,7 @@ curl "http://localhost:3001/api/v1/links/?limit=10&offset=0&sort=clickCount&orde
       "id": "c8b3a0d2-4f4c-4e4c-8a9a-2a3b4c5d6e7f",
       "url": "https://example.com",
       "shortCode": "Ab3xYz9",
-      "shortUrl": "http://localhost:3000/Ab3xYz9",
+      "shortUrl": "http://localhost:3001/Ab3xYz9",
       "createdAt": "2026-10-20T08:00:00.000Z",
       "expiresAt": null,
       "clickCount": 3,
@@ -176,7 +176,7 @@ curl "http://localhost:3001/api/v1/links/?limit=10&offset=0&sort=clickCount&orde
     }
   ],
   "pagination": {
-    "limit": 20,
+    "limit": 10,
     "offset": 0,
     "total": 1
   }
@@ -223,7 +223,7 @@ curl http://localhost:3001/api/v1/links/REPLACE_WITH_LINK_ID
     "id": "c8b3a0d2-4f4c-4e4c-8a9a-2a3b4c5d6e7f",
     "url": "https://example.com/articles/nodejs",
     "shortCode": "nodejs-guide",
-    "shortUrl": "http://localhost:3000/nodejs-guide",
+    "shortUrl": "http://localhost:3001/nodejs-guide",
     "createdAt": "2026-10-20T08:00:00.000Z",
     "expiresAt": "2026-11-01T00:00:00.000Z",
     "clickCount": 0,
@@ -421,8 +421,7 @@ curl -i http://localhost:3001/REPLACE_WITH_SHORT_CODE
 
 #### Успешный ответ
 
-Код: `302 Found`. Сервер перенаправляет запрос на исходный URL и  и передаёт исходный URL в заголовке Location, обновляя счётчик переходов и время последнего перехода.
-
+При успешном переходе сервер возвращает 302 Found и передаёт исходный URL в заголовке Location. Одновременно обновляются счётчик переходов и время последнего перехода.
 #### Возможные ошибки
 
 | Код | Описание |
