@@ -3,10 +3,12 @@ const app = express();
 
 const linksRouter = require("./routes/links");
 const redirectRouter = require("./routes/redirect");
+const { getHealth } = require("./commands/health");
 
 app.use(express.json());
 
 // Основные маршруты.
+app.get("/health", getHealth);
 app.use("/api/v1/links", linksRouter);
 app.use("/", redirectRouter);
 

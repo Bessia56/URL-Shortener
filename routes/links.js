@@ -11,7 +11,7 @@ const { deleteLink } = require("../commands/deleteLink");
 const { getHealth } = require("../commands/health");
 
 /**
- * @api {get} /api/v1/links/health Проверка доступности API
+ * @api {get} /health Проверка доступности API
  * @apiName GetHealth
  * @apiGroup Health
  *
