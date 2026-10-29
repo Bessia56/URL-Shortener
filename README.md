@@ -46,7 +46,7 @@ npm start
 Пример:
 
 ```bash
-curl http://localhost:3001/api/v1/links/health
+curl http://localhost:3001/health
 ```
 
 #### Успешный ответ
