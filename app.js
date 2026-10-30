@@ -16,9 +16,24 @@ app.use("/", redirectRouter);
 
 app.use((err, req, res, next) => {
     const isValidationError = err.name === "ValidationError";
+
     const statusCode = isValidationError
         ? 400
         : (err.status || err.statusCode || 500);
+
+    let code = "INTERNAL_ERROR";
+
+    if (isValidationError) {
+        if (err.path === "url" && err.type === "url") {
+            code = "INVALID_URL";
+        } else {
+            code = "INVALID_REQUEST";
+        }
+    }
+
+    if (statusCode === 404) {
+        code = "NOT_FOUND";
+    }
 
     const errorId = `ERR-${Date.now()}`;
 
@@ -33,6 +48,7 @@ app.use((err, req, res, next) => {
     });
 
     return res.status(statusCode).json({
+        code,
         errorId,
         name: isValidationError
             ? "Ошибка данных"

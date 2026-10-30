@@ -33,6 +33,7 @@ async function creatingLink(req, res, next) {
         while (await knex("links").where("short_code", shortCode).first()) {
             if (customCode) {
                 return res.status(409).json({
+                    code: "ALIAS_ALREADY_EXISTS",
                     error: "Этот короткий код уже занят",
                 });
             }
